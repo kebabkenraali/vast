@@ -70,22 +70,22 @@ mkdir -p models/vae models/diffusion_models models/text_encoders models/loras
 wget -P models/diffusion_models \
   https://huggingface.co/Phr00t/WAN2.2-14B-Rapid-AllInOne/resolve/main/Mega-v3/wan2.2-rapid-mega-nsfw-aio-v3.1.safetensors
 
-wget -P models/diffusion_models \
-  https://huggingface.co/Phr00t/WAN2.2-14B-Rapid-AllInOne/resolve/main/v10/wan2.2-i2v-rapid-aio-v10-nsfw.safetensors
+#wget -P models/diffusion_models \
+ # https://huggingface.co/Phr00t/WAN2.2-14B-Rapid-AllInOne/resolve/main/v10/wan2.2-i2v-rapid-aio-v10-nsfw.safetensors
 
-wget -P models/diffusion_models \
-  https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B/resolve/main/wan2.2_i2v_a14b.safetensors
+#wget -P models/diffusion_models \
+ # https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B/resolve/main/wan2.2_i2v_a14b.safetensors
 
 # WAN 2.2 LoRA
 wget -P models/loras \
   https://huggingface.co/lopi999/Wan2.2-I2V_General-NSFW-LoRA/resolve/main/Wan2.2-I2V_General-NSFW-LoRA.safetensors
 
 # WAN 2.1 VAE
-wget -P models/vae \
+#wget -P models/vae \
   https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors
 
 # WAN 2.1 text encoder
-wget -P models/text_encoders \
+#wget -P models/text_encoders \
   https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors
 
 #############################################
