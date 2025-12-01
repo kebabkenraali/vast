@@ -19,6 +19,12 @@ mkdir -p "$COMFYUI_DIR/models"
 echo "Using COMFYUI_DIR=$COMFYUI_DIR"
 
 ##############################################
+# Install SageAttention
+##############################################
+echo "=== Installing SageAttention ==="
+pip install sageattention
+
+##############################################
 # Helper function for downloading files
 ##############################################
 download() {
@@ -97,19 +103,38 @@ echo "=== Installing custom nodes ==="
 cd "$COMFYUI_DIR/custom_nodes"
 
 NODES=(
-    "https://github.com/ltdrdata/ComfyUI-Manager"
     "https://github.com/cubiq/ComfyUI_essentials"
     "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
     "https://github.com/kijai/ComfyUI-WanVideoWrapper"
+    "https://github.com/chrisgoringe/cg-use-everywhere"
+    "https://github.com/chflame163/ComfyUI_LayerStyle"
+    "https://github.com/jamesWalker55/comfyui-various"
+    "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes"
+    "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler"
+    "https://github.com/kijai/ComfyUI-KJNodes"
+    "https://github.com/ltdrdata/ComfyUI-Impact-Pack"
 )
 
 for repo in "${NODES[@]}"; do
-    dir=$(basename "$repo")
+    dir=$(basename "$repo" .git)
     if [ ! -d "$dir" ]; then
         echo "[GIT] Cloning $repo"
         git clone "$repo"
     else
-        echo "[GIT] $dir already exists"
+        echo "[GIT] Updating $dir"
+        cd "$dir"
+        git pull
+        cd ..
+    fi
+    
+    if [ -f "$dir/requirements.txt" ]; then
+        echo "Installing requirements for $dir"
+        pip install -r "$dir/requirements.txt"
+    fi
+    
+    if [ -f "$dir/install.py" ]; then
+        echo "Running install.py for $dir"
+        python "$dir/install.py"
     fi
 done
 
